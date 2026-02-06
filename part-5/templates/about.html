@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}About | {{ info.name }}{% endblock %}
+
+{% block content %}
+
+<!-- ================= ABOUT ME ================= -->
+<div class="card">
+    <h2>About Me</h2>
+    <p style="font-size: 18px; margin-bottom: 20px;">
+        I’m <strong>{{ info.name }}</strong>, a motivated MCA student and aspiring software developer from India.
+        I enjoy building practical web applications using Python and Flask, and I’m constantly improving my
+        problem-solving and development skills through hands-on projects.
+    </p>
+
+    <div class="info-box">
+        <strong>Behind the Scenes (Flask + Jinja2):</strong>
+        <p>
+            This page demonstrates how personal data such as profile details and skill sets
+            are sent from <strong>Flask (Python)</strong> to the frontend using
+            <strong>dictionaries and lists</strong>, then rendered dynamically with Jinja2.
+        </p>
+    </div>
+</div>
+
+<!-- ================= SKILLS ================= -->
+<div class="card">
+    <h2>Technical Skills</h2>
+    <p style="margin-bottom: 20px;">
+        These are the core technologies I actively use while building academic and personal projects.
+    </p>
+
+    {% for skill in skills %}
+    <div class="skill-item">
+        <div class="skill-name">
+            <a href="{{ url_for('skill_projects', slug=skill.slug) }}">
+                {{ skill.name }}
+            </a>
+            <span>{{ skill.level }}%</span>
+        </div>
+
+        <div class="skill-bar">
+            <div class="skill-progress" data-width="{{ skill.level }}"></div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- ================= LEARNING JOURNEY ================= -->
+<div class="card">
+    <h2>What I’m Currently Focusing On</h2>
+    <ul style="margin-left: 20px;">
+        <li>Advanced Python concepts and Flask best practices</li>
+        <li>Building clean, responsive UIs with modern CSS</li>
+        <li>JavaScript fundamentals for frontend interaction</li>
+        <li>Database design using MySQL and SQL optimization</li>
+        <li>Git, GitHub, and team-based development workflows</li>
+    </ul>
+</div>
+
+{% endblock %}

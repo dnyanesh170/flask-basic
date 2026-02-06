@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+
+    <!-- Shared Part-4 Theme -->
+    <link rel="stylesheet" href="/static/style.css">
+
+    <style>
+        .product-list{
+            margin:24px 0;
+        }
+        .product-item{
+            background:#f1f8ff;
+            border:2px solid #bbdefb;
+            border-radius:10px;
+            padding:22px;
+            margin:18px 0;
+            transition:transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .product-item:hover{
+            transform:translateY(-2px);
+            box-shadow:0 8px 18px rgba(0,0,0,0.08);
+        }
+        .product-item h2{
+            margin:0 0 8px 0;
+            color:#0d47a1;
+        }
+        .price{
+            font-size:18px;
+            font-weight:600;
+            color:#263238;
+        }
+        .btn{
+            display:inline-block;
+            margin-top:12px;
+            padding:10px 18px;
+            background:#1976d2;
+            color:#ffffff;
+            text-decoration:none;
+            border-radius:6px;
+            font-weight:600;
+        }
+        .btn:hover{
+            background:#1565c0;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/links">URL Builder</a>
+        <a href="/products">Products</a>
+        <a href="/category/electronics/product/1">Electronics</a>
+    </nav>
+
+    <h1>Available Products</h1>
+    <p>Select a product to view detailed information using dynamic routes.</p>
+
+    <div class="product-list">
+        {% for pid, product in products.items() %}
+        <div class="product-item">
+            <h2>{{ product.name }}</h2>
+            <div class="price">Price: ₹ {{ product.price }}</div>
+            <a href="/product/{{ pid }}" class="btn">View Details</a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <p>
+        <strong>How this works:</strong>
+        Each product card is generated using a Jinja2
+        <code>{% raw %}{% for %}{% endraw %}</code> loop over a Python dictionary.
+    </p>
+
+</div>
+</body>
+</html>

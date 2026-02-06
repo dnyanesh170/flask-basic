@@ -1,0 +1,60 @@
+/*
+Sage & Coral — Part 4 Theme (Light)
+Clean, modern light theme using soft sage tones and coral highlights
+*/
+
+:root {
+    --bg: #f4f6f9;
+    --card: #ffffff;
+    --accent: #ff6f3c;
+    --accent-soft: rgba(255, 111, 60, 0.12);
+    --text: #24323d;
+    --muted: #6b7c85;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 32px;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+}
+
+.container {
+    max-width: 960px;
+    margin: auto;
+    background-color: var(--card);
+    padding: 32px;
+    border-radius: 12px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--muted);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+nav a:hover {
+    background-color: var(--accent-soft);
+    color: var(--accent);
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+    color: var(--text);
+}

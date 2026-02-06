@@ -1,0 +1,73 @@
+<!-- part6/templates/add_task.html -->
+{% extends "base.html" %}
+
+{% block title %}Add Task | Dnyanesh Rane – Task Manager{% endblock %}
+
+{% block content %}
+<h1>Add a New Task</h1>
+
+<form method="post" action="{{ url_for('add') }}" style="max-width:600px;">
+
+    <div style="margin-bottom:16px;">
+        <label for="title"><strong>Task Title</strong></label><br>
+        <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="e.g. Prepare MCA semester notes"
+            required
+            style="width:100%;padding:10px;margin-top:6px;"
+        >
+    </div>
+
+    <div style="margin-bottom:16px;">
+        <label for="due_date"><strong>Target Date</strong></label><br>
+        <input
+            type="date"
+            id="due_date"
+            name="due_date"
+            style="width:100%;padding:10px;margin-top:6px;"
+        >
+    </div>
+
+    <div style="margin-bottom:16px;">
+        <label for="priority"><strong>Priority</strong></label><br>
+        <select
+            id="priority"
+            name="priority"
+            required
+            style="width:100%;padding:10px;margin-top:6px;"
+        >
+            <option value="">-- Choose Priority --</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+    </div>
+
+    <div style="margin-bottom:16px;">
+        <label for="status"><strong>Status</strong></label><br>
+        <select
+            id="status"
+            name="status"
+            required
+            style="width:100%;padding:10px;margin-top:6px;"
+        >
+            <option value="">-- Choose Status --</option>
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Completed">Completed</option>
+        </select>
+    </div>
+
+    <input
+        type="submit"
+        value="Add Task"
+        style="padding:10px 18px;background:#047857;color:white;border:none;border-radius:6px;cursor:pointer;"
+    >
+</form>
+
+<p style="margin-top:22px;">
+    <a href="{{ url_for('index') }}">← Back to Task List</a>
+</p>
+{% endblock %}

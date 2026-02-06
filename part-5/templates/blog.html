@@ -1,0 +1,48 @@
+<!-- ==================================================
+part5/templates/blog.html
+Personal Tech Blog – Dnyanesh Rane
+================================================== -->
+
+{% extends "base.html" %}
+
+{% block title %}Blog | {{ info.name }}{% endblock %}
+
+{% block content %}
+
+<!-- ================= BLOG OVERVIEW ================= -->
+<div class="card">
+    <h2>Tech Notes & Learnings</h2>
+    <p>
+        Practical learnings, college projects, internship experiences,
+        and real-world problem solving from my journey as an Indian
+        Computer Science student and developer.
+    </p>
+</div>
+
+<!-- ================= BLOG ENTRIES ================= -->
+{% for post in posts %}
+<div class="card">
+    <h3>{{ post.title }}</h3>
+
+    <p style="color: var(--text-light); font-size: 14px; margin-bottom: 6px;">
+        {{ post.date }} · India
+    </p>
+
+    <p style="margin-top: 12px; line-height: 1.7;">
+        {{ post.content }}
+    </p>
+</div>
+{% endfor %}
+
+<!-- ================= NO POSTS MESSAGE ================= -->
+{% if posts|length == 0 %}
+<div class="card">
+    <p>
+        No articles published yet.  
+        I’ll be sharing my learning journey, project breakdowns,
+        and tech insights very soon 🚀
+    </p>
+</div>
+{% endif %}
+
+{% endblock %}

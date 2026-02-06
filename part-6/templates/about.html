@@ -1,0 +1,55 @@
+<!-- part6/templates/about.html -->
+{% extends "base.html" %}
+
+{% block title %}About | Dnyanesh Rane – Task Manager{% endblock %}
+
+{% block content %}
+<h1>About This Application</h1>
+
+<div style="background:#f9fbff;padding:22px;border-radius:8px;line-height:1.9;">
+
+    <h2>🗂️ Why This App Exists</h2>
+    <p>
+        This project is a <strong>Flask-based personal task manager</strong> developed by
+        <strong>Dnyanesh Rane</strong> as a practical learning exercise.
+        The goal is to manage daily academic, personal, and professional tasks
+        in a clear and organized manner using Python and web technologies.
+    </p>
+
+    <h2>🚀 Key Features</h2>
+    <ul style="margin-left:22px;margin-bottom:22px;">
+        <li><strong>All Tasks View:</strong> See every task on a single dashboard</li>
+        <li><strong>Task Details:</strong> Open a task to view full information</li>
+        <li><strong>Add New Tasks:</strong> Create tasks with priority and status</li>
+        <li><strong>Priority Levels:</strong> High, Medium, and Low for better focus</li>
+        <li><strong>Progress Tracking:</strong> Pending, In Progress, and Completed</li>
+    </ul>
+
+    <h2>🧰 Technology Stack</h2>
+    <ul style="margin-left:22px;margin-bottom:22px;">
+        <li><strong>Backend:</strong> Flask (Python)</li>
+        <li><strong>Frontend:</strong> HTML5, CSS3, Jinja2 Templates</li>
+        <li><strong>Data Storage:</strong> In-memory Python structures</li>
+    </ul>
+
+    <h2>🎯 Learning Outcomes</h2>
+    <p>
+        This application reflects hands-on understanding of core web concepts,
+        commonly used in Indian tech internships and entry-level roles:
+    </p>
+    <ul style="margin-left:22px;">
+        <li>Flask routing and URL handling</li>
+        <li>Template inheritance with <code>base.html</code></li>
+        <li>Dynamic data rendering using Jinja2</li>
+        <li>Reusable layouts and components</li>
+        <li>Clean, readable, and responsive UI design</li>
+    </ul>
+
+    <p style="margin-top:18px;">
+        This project serves as a strong foundation for building
+        more advanced systems like student dashboards, college projects,
+        and productivity tools.
+    </p>
+
+</div>
+{% endblock %}

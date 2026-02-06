@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} | Product Details</title>
+
+    <!-- Shared Part-4 Theme -->
+    <link rel="stylesheet" href="/static/style.css">
+
+    <!-- Page-specific styling -->
+    <style>
+        .product-id{
+            background:#ff7043;
+            color:#ffffff;
+            padding:6px 18px;
+            border-radius:20px;
+            font-size:14px;
+            display:inline-block;
+            margin-bottom:18px;
+            font-weight:600;
+        }
+        .product-card{
+            background:linear-gradient(135deg,#ff7043 0%,#ff8a65 100%);
+            color:#ffffff;
+            padding:42px;
+            border-radius:14px;
+            text-align:center;
+            margin-bottom:26px;
+        }
+        .product-card h1{
+            margin:0 0 18px 0;
+            font-size:34px;
+        }
+        .price{
+            font-size:30px;
+            font-weight:700;
+            background:rgba(255,255,255,0.25);
+            display:inline-block;
+            padding:14px 34px;
+            border-radius:40px;
+        }
+        .info-box{
+            background:#e3f2fd;
+            border-left:5px solid #1976d2;
+            padding:18px;
+            border-radius:8px;
+            margin:24px 0;
+        }
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin:22px 0;
+        }
+        th,td{
+            padding:14px;
+            text-align:left;
+            border-bottom:1px solid #e0e0e0;
+        }
+        th{
+            background:#f5f7fa;
+        }
+        .action-buttons{
+            margin:32px 0;
+            text-align:center;
+        }
+        .btn{
+            display:inline-block;
+            margin:6px;
+            padding:12px 26px;
+            background:#1976d2;
+            color:#ffffff;
+            text-decoration:none;
+            border-radius:6px;
+            font-weight:600;
+        }
+        .btn:hover{
+            background:#1565c0;
+        }
+        .btn-secondary{
+            background:#2e7d32;
+        }
+        .btn-secondary:hover{
+            background:#1b5e20;
+        }
+        ul li a{
+            color:#1565c0;
+            font-weight:600;
+            text-decoration:none;
+        }
+        ul li a:hover{
+            text-decoration:underline;
+        }
+        code{
+            background:#eceff1;
+            padding:2px 6px;
+            border-radius:4px;
+            font-family:monospace;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/products">Products</a>
+        <a href="/about/">About</a>
+        <a href="/links">URL Builder</a>
+        <a href="/category/electronics/product/1">Electronics</a>
+    </nav>
+
+    <span class="product-id">Product ID: {{ product_id }}</span>
+
+    <div class="product-card">
+        <h1>{{ product.name }}</h1>
+        <div class="price">₹ {{ product.price }}</div>
+    </div>
+
+    <div class="info-box">
+        <strong>Dynamic Route Demonstration</strong>
+        <p>
+            This page is rendered using the route
+            <code>/product/&lt;int:product_id&gt;</code>.
+        </p>
+        <ul>
+            <li>Product data is retrieved from a Python dictionary</li>
+            <li>Invalid product IDs trigger a 404 response</li>
+            <li>Template values are injected using Jinja2</li>
+        </ul>
+    </div>
+
+    <h2>Product Information</h2>
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Product ID</td>
+            <td><strong>{{ product_id }}</strong></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><strong>{{ product.name }}</strong></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><strong>₹ {{ product.price }}</strong></td>
+        </tr>
+    </table>
+
+    <div class="action-buttons">
+        <a href="/products" class="btn">Back to Products</a>
+        <a href="/category/electronics/product/{{ product_id }}" class="btn btn-secondary">
+            View in Electronics Category
+        </a>
+    </div>
+
+    <h3>Explore More Products</h3>
+    <ul>
+        <li><a href="/product/1">Product 1: Laptop</a></li>
+        <li><a href="/product/2">Product 2: Smartphone</a></li>
+        <li><a href="/product/3">Product 3: Tablet</a></li>
+        <li><a href="/product/99">Product 99 (Unavailable)</a></li>
+    </ul>
+
+</div>
+</body>
+</html>

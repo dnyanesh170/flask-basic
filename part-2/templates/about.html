@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Flask Templates</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+            background-color: #f2f3f5;
+        }
+        .wrapper {
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+        h1 {
+            color: #222;
+        }
+        nav {
+            margin-bottom: 25px;
+        }
+        nav a {
+            margin-right: 18px;
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        code {
+            background-color: #f1f1f1;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        pre {
+            background-color: #1e1e1e;
+            color: #eaeaea;
+            padding: 18px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+        </nav>
+
+        <h1>About This Flask Project</h1>
+
+        <p>
+            This page is served using Flask’s template system and is loaded from
+            <code>templates/about.html</code>.
+        </p>
+
+        <h2>Using render_template()</h2>
+        <p>
+            The HTML content you are viewing is returned from the backend using the
+            <code>render_template()</code> function.
+        </p>
+
+        <pre>
+@app.route("/about")
+def about():
+    return render_template("about.html")
+        </pre>
+
+        <h2>Template Rendering Basics</h2>
+        <p>
+            Flask uses <strong>Jinja2</strong> as its template engine. At this stage,
+            the page is static, but templates allow much more powerful features such as:
+        </p>
+
+        <ul>
+            <li>Sending variables from Python to HTML</li>
+            <li>Displaying lists using loops</li>
+            <li>Applying conditions inside templates</li>
+            <li>Building reusable layouts with base templates</li>
+        </ul>
+
+        <p>
+            As this project grows, templates will help separate application logic
+            from presentation.
+        </p>
+
+        <p>
+            <a href="/">Go back to Home</a>
+        </p>
+
+    </div>
+</body>
+</html>

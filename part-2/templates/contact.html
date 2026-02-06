@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Flask Templates</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+            background-color: #f2f3f5;
+        }
+        .wrapper {
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+        h1 {
+            color: #222;
+        }
+        nav {
+            margin-bottom: 25px;
+        }
+        nav a {
+            margin-right: 18px;
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004f9e;
+        }
+        .info {
+            margin-top: 25px;
+            background-color: #f7f7f7;
+            padding: 15px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </nav>
+
+        <h1>Contact Us</h1>
+
+        <p>
+            Use the form below to get in touch. This page demonstrates how
+            HTML forms are structured in Flask templates.
+        </p>
+
+        <form method="post" action="#">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write your message here"></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+
+        <div class="info">
+            <p>
+                This contact page can later be connected to Flask routes to handle
+                form submission, validation, and database storage.
+            </p>
+        </div>
+
+        <p>
+            <a href="/">Back to Home</a>
+        </p>
+
+    </div>
+</body>
+</html>

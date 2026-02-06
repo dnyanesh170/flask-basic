@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Dynamic Routes Demo</title>
+
+    <!-- External shared style (Part 4) -->
+    <link rel="stylesheet" href="/static/style.css">
+
+    <!-- Page-specific styles -->
+    <style>
+        .search-section{
+            background: linear-gradient(135deg, #ff8a65, #ff5252);
+            padding: 28px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .search-section h2{color:#fff;margin:0}
+        .search-section p{color:#fff;margin:12px 0}
+
+        .search-form{
+            display:flex;
+            gap:10px;
+            max-width:520px;
+            margin:0 auto;
+        }
+        .search-form input{
+            flex:1;
+            padding:12px 18px;
+            border:none;
+            border-radius:30px;
+            outline:none;
+            font-size:15px;
+        }
+        .search-form button{
+            padding:12px 28px;
+            border:none;
+            border-radius:30px;
+            background:#2e7d32;
+            color:#fff;
+            font-weight:600;
+            cursor:pointer;
+        }
+        .search-form button:hover{opacity:.9}
+
+        .route-demo{
+            background:#f1f8ff;
+            border:2px solid #bbdefb;
+            border-radius:10px;
+            padding:22px;
+            margin:18px 0;
+        }
+        .route-demo h3{margin-top:0;color:#1565c0}
+        .route-demo a{
+            display:inline-block;
+            margin:6px 10px 6px 0;
+            padding:8px 18px;
+            background:#1976d2;
+            color:#fff;
+            text-decoration:none;
+            border-radius:6px;
+            font-size:14px;
+        }
+        .route-demo a:hover{background:#0d47a1}
+
+        .code-block{
+            background:#263238;
+            color:#e0f2f1;
+            padding:14px;
+            border-radius:6px;
+            font-family:monospace;
+            margin:12px 0;
+            font-size:13px;
+        }
+        .try-it{
+            background:#f1f8e9;
+            border-left:5px solid #558b2f;
+            padding:18px;
+            border-radius:6px;
+            margin-top:25px;
+        }
+        code{
+            background:#eceff1;
+            padding:2px 6px;
+            border-radius:4px;
+            font-family:monospace;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/links">URL Builder</a>
+        <a href="/products">Products</a>
+        <a href="/category/electronics/product/1">Electronics</a>
+    </nav>
+
+    <h1>Dynamic Routes in Flask</h1>
+    <p>
+        This page demonstrates how Flask captures values directly from URLs
+        using <code>&lt;variable&gt;</code> syntax and passes them to templates.
+    </p>
+
+    <!-- SEARCH FEATURE -->
+    <div class="search-section">
+        <h2>🔍 Dynamic Search</h2>
+        <p>Submit a query and Flask will redirect dynamically</p>
+        <form class="search-form" action="/search-redirect" method="get">
+            <input type="text" name="q" placeholder="Search laptops, python, flask..." required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <!-- USER ROUTE -->
+    <div class="route-demo">
+        <h3>1. User Profile</h3>
+        <p>Route: <code>/user/&lt;username&gt;</code></p>
+        <div class="code-block">
+@app.route('/user/&lt;username&gt;')<br>
+def user_profile(username):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return render_template('user.html', username=username)
+        </div>
+        <a href="/user/Alice">Alice</a>
+        <a href="/user/Bob">Bob</a>
+        <a href="/user/Charlie">Charlie</a>
+    </div>
+
+    <!-- POST ROUTE -->
+    <div class="route-demo">
+        <h3>2. Post Route (Integer)</h3>
+        <p>Route: <code>/post/&lt;int:post_id&gt;</code></p>
+        <div class="code-block">
+@app.route('/post/&lt;int:post_id&gt;')<br>
+def show_post(post_id):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return render_template('post.html', post_id=post_id)
+        </div>
+        <a href="/post/1">Post 1</a>
+        <a href="/post/2">Post 2</a>
+        <a href="/post/3">Post 3</a>
+        <a href="/post/99">Invalid Post</a>
+    </div>
+
+    <!-- MULTI PARAMETER -->
+    <div class="route-demo">
+        <h3>3. Multiple Parameters</h3>
+        <p>Route: <code>/user/&lt;username&gt;/post/&lt;int:post_id&gt;</code></p>
+        <a href="/user/Alice/post/1">Alice → Post 1</a>
+        <a href="/user/Bob/post/2">Bob → Post 2</a>
+    </div>
+
+    <!-- PRODUCT -->
+    <div class="route-demo">
+        <h3>4. Product Page</h3>
+        <p>Route: <code>/product/&lt;int:product_id&gt;</code></p>
+        <a href="/product/1">Laptop</a>
+        <a href="/product/2">Smartphone</a>
+        <a href="/product/3">Tablet</a>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="route-demo">
+        <h3>5. Search Route</h3>
+        <p>Route: <code>/search/&lt;query&gt;</code></p>
+        <a href="/search/laptop">laptop</a>
+        <a href="/search/python flask">python flask</a>
+        <a href="/search/web development">web development</a>
+    </div>
+
+    <div class="try-it">
+        <strong>Try it yourself:</strong>
+        <ul>
+            <li><code>localhost:5000/user/YourName</code></li>
+            <li><code>localhost:5000/post/10</code></li>
+            <li><code>localhost:5000/user/YourName/post/2</code></li>
+            <li><code>localhost:5000/search/anything</code></li>
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>

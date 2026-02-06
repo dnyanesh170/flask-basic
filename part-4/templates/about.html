@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About – Dynamic Routing in Flask</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about/">About</a>
+            <a href="/links">URL Builder</a>
+            <a href="/product/1">Product</a>
+            <a href="/category/electronics/product/1">Electronics Category</a>
+        </nav>
+
+        <h1>Understanding Dynamic Routes</h1>
+
+        <p>
+            Dynamic routes in Flask allow parts of a URL to behave like variables.
+            These values are captured directly from the address bar and passed into
+            Python functions for processing.
+        </p>
+
+        <h2>Common URL Parameter Types</h2>
+
+        <table>
+            <tr>
+                <th>Pattern</th>
+                <th>Purpose</th>
+                <th>Sample URL</th>
+            </tr>
+            <tr>
+                <td><code>&lt;name&gt;</code></td>
+                <td>Text value (string)</td>
+                <td>/user/rahul</td>
+            </tr>
+            <tr>
+                <td><code>&lt;int:id&gt;</code></td>
+                <td>Whole numbers only</td>
+                <td>/post/5</td>
+            </tr>
+            <tr>
+                <td><code>&lt;float:price&gt;</code></td>
+                <td>Decimal values</td>
+                <td>/price/1499.50</td>
+            </tr>
+            <tr>
+                <td><code>&lt;path:file&gt;</code></td>
+                <td>Path with slashes</td>
+                <td>/docs/python/basics.pdf</td>
+            </tr>
+        </table>
+
+        <div class="tip">
+            <strong>Trailing Slash Tip</strong>
+            <p>
+                Routes defined with a trailing slash (for example <code>/about/</code>)
+                work for both <code>/about</code> and <code>/about/</code>.
+                Flask automatically handles the redirection.
+            </p>
+        </div>
+
+        <h2>Where Dynamic Routes Are Useful</h2>
+        <ul>
+            <li>User dashboards like <code>/user/&lt;username&gt;</code></li>
+            <li>Blog systems such as <code>/post/&lt;int:post_id&gt;</code></li>
+            <li>Product pages like <code>/product/&lt;int:product_id&gt;</code></li>
+            <li>Category-based navigation paths</li>
+        </ul>
+
+        <p>
+            <a href="/">← Return to Home</a>
+        </p>
+    </div>
+</body>
+</html>

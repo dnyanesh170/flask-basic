@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grades</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #eef2f7;
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 14px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #2b6cb0;
+            color: white;
+        }
+        .pass {
+            color: green;
+            font-weight: bold;
+        }
+        .fail {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Academic Performance</h1>
+
+<table>
+    <tr>
+        <th>Subject</th>
+        <th>Marks</th>
+        <th>Result</th>
+    </tr>
+
+    {% for subject in grades %}
+    <tr>
+        <td>{{ subject.name }}</td>
+        <td>{{ subject.marks }}</td>
+        <td>
+            {% if subject.marks >= 40 %}
+                <span class="pass">Pass</span>
+            {% else %}
+                <span class="fail">Fail</span>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p style="margin-top:20px;">
+    Total Subjects: <strong>{{ grades | length }}</strong>
+</p>
+
+</body>
+</html>

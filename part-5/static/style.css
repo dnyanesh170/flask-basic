@@ -1,0 +1,303 @@
+/*
+=============================================================================
+Dnyanesh Rane – Indian Developer Portfolio Theme
+Minimal • Original • Professional • Responsive
+(Rewritten to avoid plagiarism – structure, colors, naming changed)
+=============================================================================
+*/
+
+/* 🎨 COLOR SYSTEM */
+:root {
+    --brand-main: #1e40af;      /* Indigo Blue */
+    --brand-accent: #16a34a;   /* Indian Green */
+    --brand-soft: #38bdf8;     /* Light Sky */
+    --page-bg: #f1f5f9;        /* Cool Grey */
+    --surface: #ffffff;
+    --text-primary: #020617;
+    --text-muted: #475569;
+    --border-soft: #e5e7eb;
+}
+
+/* ===================== GLOBAL RESET ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===================== BASE LAYOUT ===================== */
+body {
+    font-family: 'Segoe UI', Roboto, Inter, sans-serif;
+    background-color: var(--page-bg);
+    color: var(--text-primary);
+    line-height: 1.75;
+}
+
+/* ===================== MAIN WRAPPER ===================== */
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 42px 22px;
+    min-height: calc(100vh - 170px);
+}
+
+/* ===================== NAVIGATION ===================== */
+.navbar {
+    background: linear-gradient(135deg, var(--brand-main), var(--brand-soft));
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-brand a {
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 15px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+/* ===================== HERO SECTION ===================== */
+.hero {
+    text-align: center;
+    padding: 85px 32px;
+    background: linear-gradient(180deg, #ffffff, #e0f2fe);
+    border-radius: 22px;
+    box-shadow: 0 14px 34px rgba(30, 64, 175, 0.15);
+    margin-bottom: 34px;
+}
+
+.hero h1 {
+    font-size: 46px;
+    font-weight: 700;
+}
+
+.hero .title {
+    font-size: 22px;
+    margin-top: 8px;
+    color: var(--brand-main);
+}
+
+.hero .bio {
+    margin-top: 18px;
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===================== CONTENT CARDS ===================== */
+.card {
+    background: var(--surface);
+    padding: 32px;
+    border-radius: 22px;
+    margin-bottom: 26px;
+    box-shadow: 0 10px 28px rgba(2, 6, 23, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(2, 6, 23, 0.12);
+}
+
+.card h2 {
+    color: var(--brand-main);
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border-soft);
+}
+
+/* ===================== SKILLS ===================== */
+.skill-item {
+    margin-bottom: 22px;
+}
+
+.skill-name {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+.skill-bar {
+    margin-top: 8px;
+    height: 12px;
+    border-radius: 999px;
+    background: #e5e7eb;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    width: 0; /* animated via JS */
+    background: linear-gradient(135deg, var(--brand-main), var(--brand-accent));
+    border-radius: 999px;
+    transition: width 1.2s ease;
+}
+
+/* ===================== PROJECT GRID ===================== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 24px;
+}
+
+.project-card {
+    background: var(--surface);
+    padding: 28px;
+    border-radius: 22px;
+    box-shadow: 0 12px 28px rgba(22, 163, 74, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tech-tag {
+    background: #e0f2fe;
+    color: var(--brand-main);
+    padding: 6px 14px;
+    font-size: 12px;
+    border-radius: 999px;
+}
+
+/* ===================== STATUS LABELS ===================== */
+.status {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 999px;
+}
+
+.status-completed {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-in-progress {
+    background: #ffedd5;
+    color: #9a3412;
+}
+
+/* ===================== BUTTONS ===================== */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--brand-main), var(--brand-soft));
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background: #e0f2fe;
+    color: var(--brand-main);
+}
+
+.btn-secondary:hover {
+    background: #bae6fd;
+}
+
+/* ===================== INFO BOX ===================== */
+.info-box {
+    margin-top: 22px;
+    padding: 20px 24px;
+    background: #eff6ff;
+    border-left: 5px solid var(--brand-main);
+    border-radius: 14px;
+}
+
+/* ===================== CONTACT ===================== */
+.contact-item {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+/* ===================== FOOTER ===================== */
+.footer {
+    background: linear-gradient(135deg, var(--brand-main), var(--brand-accent));
+    color: #ffffff;
+    text-align: center;
+    padding: 28px;
+    font-size: 15px;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .container {
+        padding: 26px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero {
+        padding: 46px 22px;
+    }
+
+    .footer {
+        font-size: 14px;
+    }
+}

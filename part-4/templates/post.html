@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article #{{ post_id }} | Flask Learning Series</title>
+
+    <!-- Shared Part-4 Theme -->
+    <link rel="stylesheet" href="/static/style.css">
+
+    <!-- Page-specific styling -->
+    <style>
+        .post-tag{
+            background:#ff7043;
+            color:#ffffff;
+            padding:6px 16px;
+            border-radius:20px;
+            font-size:14px;
+            display:inline-block;
+            margin-bottom:18px;
+            font-weight:600;
+        }
+        .post-card{
+            border:1px solid #e0e0e0;
+            border-radius:10px;
+            padding:26px;
+            margin:22px 0;
+            background:#ffffff;
+        }
+        .post-card h2{
+            margin-top:0;
+            color:#263238;
+        }
+        .info-box{
+            background:#e8f5e9;
+            border-left:5px solid #43a047;
+            padding:16px;
+            border-radius:6px;
+            margin:22px 0;
+        }
+        .not-found{
+            background:#ffebee;
+            border:1px solid #e57373;
+            color:#b71c1c;
+            padding:22px;
+            border-radius:10px;
+            text-align:center;
+            margin:22px 0;
+        }
+        .nav-posts{
+            display:flex;
+            justify-content:space-between;
+            margin:28px 0;
+        }
+        .nav-posts a{
+            padding:10px 22px;
+            background:#eceff1;
+            color:#37474f;
+            text-decoration:none;
+            border-radius:6px;
+            font-weight:600;
+        }
+        .nav-posts a:hover{
+            background:#cfd8dc;
+        }
+        code{
+            background:#eceff1;
+            padding:2px 6px;
+            border-radius:4px;
+            font-family:monospace;
+        }
+        ul li a{
+            color:#1565c0;
+            text-decoration:none;
+            font-weight:600;
+        }
+        ul li a:hover{
+            text-decoration:underline;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/links">URL Builder</a>
+        <a href="/products">Products</a>
+        <a href="/category/electronics/product/1">Electronics</a>
+    </nav>
+
+    <span class="post-tag">Post ID: {{ post_id }}</span>
+
+    {% if post %}
+        <!-- Article exists -->
+        <div class="post-card">
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content }}</p>
+        </div>
+
+        <div class="info-box">
+            <strong>Route Insight</strong>
+            <p>
+                This page is powered by the route
+                <code>/post/&lt;int:post_id&gt;</code>, which accepts only numeric values.
+            </p>
+            <p>
+                Visiting <code>/post/abc</code> will result in a 404 error.
+            </p>
+        </div>
+    {% else %}
+        <!-- Article missing -->
+        <div class="not-found">
+            <h2>Content Not Available</h2>
+            <p>The article with ID <strong>{{ post_id }}</strong> could not be found.</p>
+            <p>Available demo articles are limited to IDs 1, 2, and 3.</p>
+        </div>
+    {% endif %}
+
+    <div class="nav-posts">
+        {% if post_id > 1 %}
+            <a href="/post/{{ post_id - 1 }}">← Previous</a>
+        {% else %}
+            <span></span>
+        {% endif %}
+        <a href="/post/{{ post_id + 1 }}">Next →</a>
+    </div>
+
+    <h3>Available Articles</h3>
+    <ul>
+        <li><a href="/post/1">Post 1: Introduction to Flask</a></li>
+        <li><a href="/post/2">Post 2: Understanding URL Routing</a></li>
+        <li><a href="/post/3">Post 3: Working with Templates</a></li>
+    </ul>
+
+</div>
+</body>
+</html>

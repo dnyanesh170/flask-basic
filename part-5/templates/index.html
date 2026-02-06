@@ -1,0 +1,74 @@
+<!-- ==================================================
+part5/templates/index.html
+Home Page – Dnyanesh Rane
+================================================== -->
+
+{% extends "base.html" %}
+
+{% block title %}Home | {{ info.name }}{% endblock %}
+
+{% block content %}
+
+<!-- ================= HERO SECTION ================= -->
+<div class="hero">
+    <h1>Hi, I’m {{ info.name }}</h1>
+    <p class="title">{{ info.title }}</p>
+    <p class="bio">
+        {{ info.bio }}
+    </p>
+
+    <div style="margin-top: 30px;">
+        <a href="{{ url_for('projects') }}" class="btn btn-primary">
+            View My Projects
+        </a>
+        <a href="{{ url_for('contact') }}" class="btn btn-secondary" style="margin-left: 12px;">
+            Contact Me
+        </a>
+    </div>
+</div>
+
+<!-- ================= INTRO CARD ================= -->
+<div class="card">
+    <h2>Welcome to My Portfolio 👋</h2>
+    <p>
+        This website is a practical Flask-based portfolio created as part of my
+        learning journey in web development. It reflects my skills, projects,
+        and understanding of real-world backend concepts.
+    </p>
+
+    <div class="info-box">
+        <strong>Key Highlights of This Website:</strong>
+        <ul style="margin-top: 12px; margin-left: 20px;">
+            <li>Flask application structure and routing</li>
+            <li>Dynamic HTML rendering using Jinja2</li>
+            <li>Clean UI with reusable templates</li>
+            <li>Static assets like CSS for styling</li>
+            <li>Project-driven learning approach</li>
+        </ul>
+    </div>
+</div>
+
+<!-- ================= QUICK LINKS ================= -->
+<div class="card">
+    <h2>Quick Navigation</h2>
+    <p>
+        Explore different sections to know more about my background and work.
+    </p>
+
+    <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 18px;">
+        <a href="{{ url_for('about') }}" class="btn btn-secondary">
+            About Me
+        </a>
+        <a href="{{ url_for('projects') }}" class="btn btn-secondary">
+            My Projects
+        </a>
+        <a href="{{ url_for('blog') }}" class="btn btn-secondary">
+            Blog
+        </a>
+        <a href="{{ url_for('contact') }}" class="btn btn-secondary">
+            Contact
+        </a>
+    </div>
+</div>
+
+{% endblock %}

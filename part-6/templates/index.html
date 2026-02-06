@@ -1,0 +1,72 @@
+<!-- part6/templates/index.html -->
+{% extends "base.html" %}
+
+{% block title %}Dashboard | Dnyanesh Rane{% endblock %}
+
+{% block content %}
+<h1>Welcome, Dnyanesh 👋</h1>
+<p>You currently have <strong>{{ tasks|length }}</strong> tasks in your planner.</p>
+
+{% if tasks %}
+<table>
+    <thead>
+        <tr>
+            <th>Task</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td>
+                <a
+                    href="{{ url_for('task', id=task.id) }}"
+                    style="color:#047857;text-decoration:none;font-weight:600;"
+                >
+                    {{ task.title }}
+                </a>
+            </td>
+
+            <td>
+                <span class="badge badge-{{ task.priority|lower }}">
+                    {{ task.priority }}
+                </span>
+            </td>
+
+            <td>
+                <span class="badge badge-{{ task.status|lower|replace(' ', '-') }}">
+                    {{ task.status }}
+                </span>
+            </td>
+
+            <td>
+                <div class="action-links">
+                    <a href="{{ url_for('task', id=task.id) }}">View</a>
+                    <a href="{{ url_for('edit', id=task.id) }}">Edit</a>
+                    <a
+                        href="{{ url_for('delete', id=task.id) }}"
+                        onclick="return confirm('Do you really want to delete this task?')"
+                    >
+                        Delete
+                    </a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3 style="margin-top:30px;">Overview</h3>
+<p>
+    <strong>Total Tasks:</strong> {{ tasks|length }}
+</p>
+
+{% else %}
+<p>
+    No tasks added yet.
+    <a href="{{ url_for('add') }}">Create your first task</a>
+</p>
+{% endif %}
+{% endblock %}

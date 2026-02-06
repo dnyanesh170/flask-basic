@@ -1,0 +1,127 @@
+<!-- =========================================
+part5/templates/project_detail.html
+Rewritten for Dnyanesh Rane (Indian context)
+========================================= -->
+
+{% extends "base.html" %}
+
+{% block title %}
+    {% if project %}
+        {{ project.name }} | {{ info.name }}
+    {% else %}
+        Project Not Found | {{ info.name }}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if project %}
+<!-- ================= PROJECT HEADER ================= -->
+<div class="card">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;">
+        <div>
+            <h2 style="border:none; padding:0;">
+                {{ project.name }}
+            </h2>
+
+            {% if project.status == 'Completed' %}
+                <span class="status status-completed">Completed</span>
+            {% elif project.status == 'In Progress' %}
+                <span class="status status-in-progress">In Progress</span>
+            {% else %}
+                <span class="status status-planned">Planned</span>
+            {% endif %}
+        </div>
+
+        <a href="{{ url_for('projects') }}" class="btn btn-secondary">
+            ← Back to All Projects
+        </a>
+    </div>
+</div>
+
+<!-- ================= PROJECT OVERVIEW ================= -->
+<div class="card">
+    <h2>Project Overview</h2>
+    <p style="font-size:18px; margin-bottom:18px;">
+        {{ project.description }}
+    </p>
+
+    <h3 style="margin-top:20px;">Tools & Technologies Used</h3>
+    <div class="tech-tags" style="margin-top:10px;">
+        {% for tech in project.tech %}
+            <span class="tech-tag">{{ tech }}</span>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- ================= PROJECT FEATURES ================= -->
+{% if project.features %}
+<div class="card">
+    <h2>Major Features</h2>
+    <ul style="margin-left:20px; margin-top:10px;">
+        {% for feature in project.features %}
+            <li style="margin-bottom:8px;">
+                {{ feature }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<!-- ================= TECHNICAL INFO ================= -->
+<div class="info-box">
+    <strong>Flask Dynamic Route Example</strong>
+    <p>
+        This page is generated using a dynamic Flask route:
+    </p>
+    <p>
+        <code>/project/&lt;int:project_id&gt;</code>
+    </p>
+    <p>
+        <strong>Project ID:</strong> {{ project_id }}
+    </p>
+</div>
+
+<!-- ================= PROJECT NAVIGATION ================= -->
+<div class="card">
+    <h2>Browse Other Projects</h2>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        {% if project_id > 1 %}
+            <a href="{{ url_for('project_detail', project_id=project_id - 1) }}"
+               class="btn btn-secondary">
+                Previous Project
+            </a>
+        {% endif %}
+        <a href="{{ url_for('project_detail', project_id=project_id + 1) }}"
+           class="btn btn-secondary">
+            Next Project
+        </a>
+    </div>
+</div>
+
+{% else %}
+<!-- ================= PROJECT NOT FOUND ================= -->
+<div class="card">
+    <h2>Project Not Available</h2>
+    <p>
+        The project with ID <strong>{{ project_id }}</strong> could not be found.
+        It may have been removed or is still under development.
+    </p>
+
+    <div style="margin-top:20px;">
+        <a href="{{ url_for('projects') }}" class="btn btn-primary">
+            Go to Projects Page
+        </a>
+    </div>
+</div>
+
+<div class="info-box">
+    <strong>Learning Note</strong>
+    <p>
+        This section demonstrates how Flask and Jinja2 safely handle
+        invalid or missing data using conditional rendering.
+    </p>
+</div>
+{% endif %}
+
+{% endblock %}

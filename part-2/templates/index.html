@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Flask Templates</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+            background-color: #f2f3f5;
+        }
+        .wrapper {
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+        h1 {
+            color: #222;
+        }
+        nav {
+            margin-bottom: 25px;
+        }
+        nav a {
+            margin-right: 18px;
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .info-box {
+            background-color: #eef6ff;
+            padding: 18px;
+            border-radius: 6px;
+            border-left: 5px solid #0066cc;
+            margin: 20px 0;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        code {
+            background-color: #f1f1f1;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+        </nav>
+
+        <h1>Welcome to Flask Template Rendering</h1>
+
+        <p>
+            This page is served from an HTML file stored inside the
+            <code>templates</code> directory using Flask.
+        </p>
+
+        <div class="info-box">
+            <strong>How this page is delivered</strong>
+            <ol>
+                <li>Your browser sends a request to the server</li>
+                <li>Flask matches the URL with a route decorator</li>
+                <li>The linked Python function is executed</li>
+                <li>The <code>index.html</code> template is loaded</li>
+                <li>The rendered HTML is returned to the browser</li>
+            </ol>
+        </div>
+
+        <h2>Benefits of Using Templates</h2>
+        <ul>
+            <li><strong>Clear separation:</strong> Python for logic, HTML for UI</li>
+            <li><strong>Easy updates:</strong> Modify design without touching backend code</li>
+            <li><strong>Reusable layouts:</strong> Common structure across pages</li>
+            <li><strong>Jinja2 support:</strong> Dynamic content and logic in templates</li>
+        </ul>
+
+    </div>
+</body>
+</html>

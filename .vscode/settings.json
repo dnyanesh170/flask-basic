@@ -1,0 +1,6 @@
+{
+    "python.defaultInterpreterPath": "C:/Users/Nexus/Desktop/Internship/flask-basics/venv/Scripts/python.exe",
+    "python.analysis.extraPaths": ["./"],
+    "python.linting.pylintEnabled": true,
+    "python-envs.pythonProjects": []
+}

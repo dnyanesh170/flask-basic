@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - {{ query }}</title>
+
+    <!-- Shared theme -->
+    <link rel="stylesheet" href="/static/style.css">
+
+    <style>
+        .search-header{
+            background:linear-gradient(135deg,#ff7043,#ff8a65);
+            color:#ffffff;
+            padding:28px;
+            border-radius:10px;
+            margin-bottom:22px;
+            text-align:center;
+        }
+        .search-header h1{
+            margin:0;
+            font-size:26px;
+        }
+        .search-query{
+            font-size:34px;
+            font-weight:700;
+            margin-top:8px;
+        }
+        .search-form{
+            background:#e3f2fd;
+            padding:20px;
+            border-radius:10px;
+            margin:24px 0;
+            display:flex;
+            gap:10px;
+        }
+        .search-form input{
+            flex:1;
+            padding:12px;
+            font-size:16px;
+            border:2px solid #90caf9;
+            border-radius:6px;
+            outline:none;
+        }
+        .search-form button{
+            padding:12px 22px;
+            font-size:16px;
+            background:#1976d2;
+            color:#ffffff;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+            font-weight:600;
+        }
+        .search-form button:hover{
+            background:#1565c0;
+        }
+        .info-box{
+            background:#f1f8e9;
+            border-left:4px solid #66bb6a;
+            padding:16px;
+            margin:22px 0;
+            border-radius:6px;
+        }
+        .search-results{
+            margin-top:30px;
+        }
+        .result-item{
+            background:#fafafa;
+            padding:18px;
+            margin:12px 0;
+            border-radius:6px;
+            border-left:4px solid #ff7043;
+        }
+        .result-item h3{
+            margin:0 0 8px 0;
+            color:#263238;
+        }
+        .examples{
+            background:#ede7f6;
+            padding:20px;
+            border-radius:10px;
+            margin-top:30px;
+        }
+        .examples h3{
+            margin-top:0;
+            color:#4527a0;
+        }
+        .examples a{
+            text-decoration:none;
+            color:#5e35b1;
+            font-weight:600;
+        }
+        .examples a:hover{
+            text-decoration:underline;
+        }
+        code{
+            background:#eceff1;
+            padding:2px 6px;
+            border-radius:4px;
+        }
+        .code-block{
+            background:#263238;
+            color:#eceff1;
+            padding:14px;
+            border-radius:6px;
+            font-family:monospace;
+            margin:12px 0;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/products">Products</a>
+        <a href="/about/">About</a>
+        <a href="/links">URL Builder</a>
+        <a href="/category/electronics/product/1">Electronics</a>
+    </nav>
+
+    <div class="search-header">
+        <h1>Search Results</h1>
+        <div class="search-query">“{{ query }}”</div>
+    </div>
+
+    <div class="search-form">
+        <form action="/search-redirect" method="get" style="display:flex;gap:10px;width:100%;">
+            <input type="text" name="q" placeholder="Search courses, products, topics..." required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="info-box">
+        <strong>Dynamic Route Demo</strong>
+        <ul>
+            <li>URL pattern: <code>/search/&lt;query&gt;</code></li>
+            <li>Query captured directly from the browser URL</li>
+            <li>Search form redirects automatically</li>
+        </ul>
+    </div>
+
+    <div class="search-results">
+        <h2>Demo Results</h2>
+        <p>These are sample results related to <strong>{{ query }}</strong>.</p>
+
+        <div class="result-item">
+            <h3>Result One</h3>
+            <p>Introductory information related to <strong>{{ query }}</strong>.</p>
+        </div>
+
+        <div class="result-item">
+            <h3>Result Two</h3>
+            <p>Practical examples and use-cases for <strong>{{ query }}</strong>.</p>
+        </div>
+
+        <div class="result-item">
+            <h3>Result Three</h3>
+            <p>Advanced references connected with <strong>{{ query }}</strong>.</p>
+        </div>
+    </div>
+
+    <h2>Route Implementation</h2>
+    <div class="code-block">
+@app.route('/search/&lt;query&gt;')<br>
+def search(query):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return render_template('search.html', query=query)
+    </div>
+
+    <div class="examples">
+        <h3>Quick Examples</h3>
+        <ul>
+            <li><a href="/search/python">Search: python</a></li>
+            <li><a href="/search/flask">Search: flask</a></li>
+            <li><a href="/search/web%20development">Search: web development</a></li>
+            <li><a href="/search/data%20science">Search: data science</a></li>
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>

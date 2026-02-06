@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Product View</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/products">Products</a>
+            <a href="/links">URL Builder</a>
+        </nav>
+
+        <h1>Category-wise Product</h1>
+
+        <div class="category-box">
+            <h2>Category Name: {{ category|title }}</h2>
+            <p>
+                <strong>Selected Product ID:</strong>
+                {{ product_id }}
+            </p>
+
+            <p>
+                This page demonstrates how Flask can handle
+                <strong>multiple dynamic URL parameters</strong>
+                within a single route.
+            </p>
+
+            <a class="btn" href="/product/{{ product_id }}">
+                View Product Details
+            </a>
+            <a class="btn" href="/products">
+                Back to Product List
+            </a>
+        </div>
+
+    </div>
+</body>
+</html>

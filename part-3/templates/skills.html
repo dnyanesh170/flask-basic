@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skills</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #eef2f7;
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+        }
+        .badge {
+            display: inline-block;
+            background: #38a169;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 25px;
+            margin: 6px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h1>Technical Skills</h1>
+
+    {% for skill in skills %}
+        <span class="badge">{{ skill }}</span>
+    {% endfor %}
+
+    <p style="margin-top:20px;">
+        Total Skills: <strong>{{ skills | length }}</strong>
+    </p>
+</div>
+
+</body>
+</html>

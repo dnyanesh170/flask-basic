@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Builder Demo – Flask url_for()</title>
+
+    <!-- Shared Part-4 theme -->
+    <link rel="stylesheet" href="/static/style.css">
+
+    <!-- Page-specific styles -->
+    <style>
+        .info-box{
+            background:#f1f8e9;
+            border-left:5px solid #7cb342;
+            padding:16px;
+            border-radius:6px;
+            margin:20px 0;
+        }
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin:22px 0;
+        }
+        th,td{
+            padding:12px;
+            border-bottom:1px solid #e0e0e0;
+            text-align:left;
+        }
+        th{
+            background:#eceff1;
+        }
+        a.test-link{
+            color:#1565c0;
+            font-weight:600;
+            text-decoration:none;
+        }
+        a.test-link:hover{
+            text-decoration:underline;
+        }
+        .code-block{
+            background:#263238;
+            color:#e0f2f1;
+            padding:14px;
+            border-radius:6px;
+            font-family:monospace;
+            margin:18px 0;
+            font-size:13px;
+        }
+        code{
+            background:#eceff1;
+            padding:2px 6px;
+            border-radius:4px;
+            font-family:monospace;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/links">URL Builder</a>
+        <a href="/products">Products</a>
+        <a href="/category/electronics/product/1">Electronics</a>
+    </nav>
+
+    <h1>Building URLs with <code>url_for()</code></h1>
+
+    <p>
+        Flask provides <strong>url_for()</strong> to generate URLs dynamically instead of
+        hard-coding paths. This makes your application safer and easier to maintain.
+    </p>
+
+    <div class="info-box">
+        <strong>Why url_for() matters</strong>
+        <ul>
+            <li>Automatically updates URLs if routes change</li>
+            <li>Safely encodes special characters</li>
+            <li>Reduces broken links</li>
+            <li>Works in Python code and Jinja2 templates</li>
+        </ul>
+    </div>
+
+    <h2>Generated URLs (Live Demo)</h2>
+    <p>All links below were created in <code>app.py</code> using <code>url_for()</code>:</p>
+
+    <table>
+        <tr>
+            <th>url_for() Call</th>
+            <th>Generated URL</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td><code>url_for('home')</code></td>
+            <td><code>{{ links.home }}</code></td>
+            <td><a class="test-link" href="{{ links.home }}">Visit</a></td>
+        </tr>
+        <tr>
+            <td><code>url_for('about')</code></td>
+            <td><code>{{ links.about }}</code></td>
+            <td><a class="test-link" href="{{ links.about }}">Visit</a></td>
+        </tr>
+        <tr>
+            <td><code>url_for('user_profile', username='Alice')</code></td>
+            <td><code>{{ links.user_alice }}</code></td>
+            <td><a class="test-link" href="{{ links.user_alice }}">Visit</a></td>
+        </tr>
+        <tr>
+            <td><code>url_for('user_profile', username='Bob')</code></td>
+            <td><code>{{ links.user_bob }}</code></td>
+            <td><a class="test-link" href="{{ links.user_bob }}">Visit</a></td>
+        </tr>
+        <tr>
+            <td><code>url_for('show_post', post_id=1)</code></td>
+            <td><code>{{ links.post_1 }}</code></td>
+            <td><a class="test-link" href="{{ links.post_1 }}">Visit</a></td>
+        </tr>
+        <tr>
+            <td><code>url_for('show_post', post_id=2)</code></td>
+            <td><code>{{ links.post_2 }}</code></td>
+            <td><a class="test-link" href="{{ links.post_2 }}">Visit</a></td>
+        </tr>
+    </table>
+
+    <h2>url_for() in Python</h2>
+    <div class="code-block">
+from flask import url_for<br><br>
+url_for('home')<br>
+url_for('user_profile', username='Alice')<br>
+url_for('show_post', post_id=42)
+    </div>
+
+    <h2>url_for() in Templates</h2>
+    <div class="code-block">
+&lt;a href="{{ url_for('home') }}"&gt;Home&lt;/a&gt;<br>
+&lt;a href="{{ url_for('user_profile', username='Alice') }}"&gt;Alice&lt;/a&gt;
+    </div>
+
+    <p><a href="/">← Back to Home</a></p>
+
+</div>
+</body>
+</html>

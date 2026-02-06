@@ -1,0 +1,87 @@
+/* Sapphire Productivity Theme – Part 6
+Focused • Minimal • Indian Workspace • Responsive
+*/
+
+:root{
+    --bg: #3ff60c;
+    --surface: #10dcef;
+    --primary: #1e40af;        /* royal blue */
+    --primary-soft: #38bdf8;   /* sky blue */
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --line: #ef0c48;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 20px;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text-main);
+}
+
+nav a{
+    margin-right: 18px;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+nav a:hover{
+    color: var(--primary);
+}
+
+.container{
+    max-width: 1000px;
+    margin: 22px auto;
+    background: var(--surface);
+    padding: 26px;
+    border-radius: 10px;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 22px;
+}
+
+th, td{
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+}
+
+th{
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.btn{
+    display: inline-block;
+    padding: 9px 16px;
+    background: var(--primary);
+    color: #f30606;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover{
+    background: var(--primary-soft);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px){
+    .container{
+        padding: 16px;
+    }
+
+    table{
+        font-size: 14px;
+    }
+}

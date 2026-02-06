@@ -1,0 +1,193 @@
+<!-- FILE: templates/user_post.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ username }} | Post {{ post_id }}</title>
+
+    <!-- Optional shared stylesheet -->
+    <link rel="stylesheet" href="/static/style.css">
+
+    <style>
+        body{
+            font-family:system-ui, Arial, sans-serif;
+            max-width:900px;
+            margin:40px auto;
+            padding:20px;
+            background:#f4f6f8;
+        }
+        .container{
+            background:#ffffff;
+            padding:30px;
+            border-radius:12px;
+            box-shadow:0 8px 24px rgba(0,0,0,0.08);
+        }
+        nav{
+            display:flex;
+            gap:14px;
+            margin-bottom:22px;
+            flex-wrap:wrap;
+        }
+        nav a{
+            text-decoration:none;
+            color:#546e7a;
+            font-weight:600;
+            padding:6px 10px;
+            border-radius:6px;
+        }
+        nav a:hover{
+            background:#e3f2fd;
+            color:#1565c0;
+        }
+        .breadcrumb{
+            font-size:14px;
+            color:#78909c;
+            margin-bottom:16px;
+        }
+        .breadcrumb a{
+            color:#1e88e5;
+            text-decoration:none;
+        }
+        .post-header{
+            background:linear-gradient(135deg,#26a69a,#2e7d32);
+            color:#ffffff;
+            padding:26px;
+            border-radius:12px;
+            margin-bottom:22px;
+        }
+        .post-header h1{
+            margin:0 0 6px 0;
+            font-size:28px;
+        }
+        .post-meta{
+            font-size:14px;
+            opacity:0.9;
+        }
+        .description{
+            margin:18px 0;
+            font-size:16px;
+        }
+        .info-box{
+            background:#ede7f6;
+            border-left:4px solid #7e57c2;
+            padding:16px;
+            border-radius:6px;
+            margin:22px 0;
+        }
+        code{
+            background:#eceff1;
+            padding:2px 6px;
+            border-radius:4px;
+            font-family:monospace;
+        }
+        .code-block{
+            background:#263238;
+            color:#eceff1;
+            padding:14px;
+            border-radius:6px;
+            font-family:monospace;
+            margin-top:10px;
+            overflow-x:auto;
+        }
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:18px;
+        }
+        th,td{
+            padding:12px;
+            border-bottom:1px solid #e0e0e0;
+            text-align:left;
+        }
+        th{
+            background:#f5f5f5;
+        }
+        .links ul{
+            padding-left:18px;
+        }
+        .links a{
+            color:#1565c0;
+            text-decoration:none;
+            font-weight:600;
+        }
+        .links a:hover{
+            text-decoration:underline;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/links">URL Builder</a>
+        <a href="/products">Products</a>
+        <a href="/category/electronics/product/1">Electronics</a>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="/">Home</a> /
+        <a href="/user/{{ username }}">{{ username }}</a> /
+        Post {{ post_id }}
+    </div>
+
+    <div class="post-header">
+        <h1>{{ username }} — Post {{ post_id }}</h1>
+        <div class="post-meta">
+            Author: {{ username }} | Identifier: {{ post_id }}
+        </div>
+    </div>
+
+    <p class="description">
+        This page demonstrates handling <strong>multiple dynamic URL parameters</strong>
+        inside a single Flask route.
+    </p>
+
+    <div class="info-box">
+        <strong>Route Definition</strong>
+        <p>Pattern used:</p>
+        <code>/user/&lt;username&gt;/post/&lt;int:post_id&gt;</code>
+
+        <div class="code-block">
+@app.route('/user/&lt;username&gt;/post/&lt;int:post_id&gt;')<br>
+def user_post(username, post_id):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return render_template('user_post.html',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;username=username,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;post_id=post_id)
+        </div>
+    </div>
+
+    <h2>Captured Parameters</h2>
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+            <th>Data Type</th>
+        </tr>
+        <tr>
+            <td><code>username</code></td>
+            <td><strong>{{ username }}</strong></td>
+            <td>string</td>
+        </tr>
+        <tr>
+            <td><code>post_id</code></td>
+            <td><strong>{{ post_id }}</strong></td>
+            <td>integer</td>
+        </tr>
+    </table>
+
+    <div class="links">
+        <h2>Try More Examples</h2>
+        <ul>
+            <li><a href="/user/Alice/post/1">/user/Alice/post/1</a></li>
+            <li><a href="/user/Bob/post/2">/user/Bob/post/2</a></li>
+            <li><a href="/user/Charlie/post/3">/user/Charlie/post/3</a></li>
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>

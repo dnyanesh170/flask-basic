@@ -1,0 +1,258 @@
+<!-- part6/templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dnyanesh Rane | Task Manager{% endblock %}</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+            min-height:100vh;
+            padding:20px;
+        }
+
+        .container{
+            max-width:920px;
+            margin:0 auto;
+            background:#ffffff;
+            border-radius:12px;
+            box-shadow:0 12px 32px rgba(0,0,0,0.25);
+            overflow:hidden;
+        }
+
+        header{
+            background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+            color:#ffffff;
+            padding:32px;
+            text-align:center;
+        }
+
+        header h1{
+            font-size:2.4em;
+            margin-bottom:8px;
+            color:#cbd5e1
+        }
+
+        header p{
+            font-size:1.05em;
+            opacity:0.95;
+        }
+
+        nav{
+            background:#f1f5f9;
+            padding:16px;
+            border-bottom:2px solid #e2e8f0;
+            display:flex;
+            gap:20px;
+            justify-content:center;
+            flex-wrap:wrap;
+        }
+
+        nav a{
+            text-decoration:none;
+            color:#334155;
+            font-weight:600;
+            padding:10px 18px;
+            border-radius:6px;
+            transition:all 0.3s ease;
+        }
+
+        nav a:hover{
+            background:#047857;
+            color:#ffffff;
+        }
+
+        main{
+            padding:30px;
+            min-height:420px;
+        }
+
+        .content{
+            margin-top:20px;
+        }
+
+        footer{
+            background:#f1f5f9;
+            padding:20px;
+            text-align:center;
+            color:#475569;
+            border-top:2px solid #e2e8f0;
+            font-size:0.95em;
+        }
+
+        h1,h2{
+            color:#047857;
+            margin-bottom:18px;
+        }
+
+        button,
+        input[type="submit"]{
+            background:#047857;
+            color:#ffffff;
+            padding:10px 20px;
+            border:none;
+            border-radius:6px;
+            cursor:pointer;
+            font-size:1em;
+            transition:all 0.3s ease;
+        }
+
+        button:hover,
+        input[type="submit"]:hover{
+            background:#065f46;
+            transform:translateY(-2px);
+            box-shadow:0 6px 18px rgba(4,120,87,0.35);
+        }
+
+        form{
+            background:#f8fafc;
+            padding:22px;
+            border-radius:8px;
+            margin-bottom:24px;
+        }
+
+        form input,
+        form select{
+            width:100%;
+            padding:10px;
+            margin-bottom:15px;
+            border:1px solid #cbd5e1;
+            border-radius:6px;
+            font-size:1em;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:20px;
+        }
+
+        table th,
+        table td{
+            padding:12px;
+            text-align:left;
+            border-bottom:1px solid #e2e8f0;
+        }
+
+        table th{
+            background:#047857;
+            color:#ffffff;
+            font-weight:600;
+        }
+
+        table tr:hover{
+            background:#f8fafc;
+        }
+
+        .action-links{
+            display:flex;
+            gap:10px;
+        }
+
+        .action-links a{
+            padding:6px 12px;
+            background:#047857;
+            color:#ffffff;
+            text-decoration:none;
+            border-radius:4px;
+            transition:all 0.3s ease;
+        }
+
+        .action-links a:hover{
+            background:#065f46;
+        }
+
+        .badge{
+            display:inline-block;
+            padding:6px 12px;
+            border-radius:999px;
+            font-size:0.85em;
+            font-weight:600;
+        }
+
+        .badge-completed{
+            background:#dcfce7;
+            color:#166534;
+        }
+
+        .badge-pending{
+            background:#fee2e2;
+            color:#7f1d1d;
+        }
+
+        .badge-in-progress{
+            background:#fef3c7;
+            color:#92400e;
+        }
+
+        .badge-high{
+            background:#fee2e2;
+            color:#7f1d1d;
+        }
+
+        .badge-medium{
+            background:#fef3c7;
+            color:#92400e;
+        }
+
+        .badge-low{
+            background:#dcfce7;
+            color:#166534;
+        }
+
+        .task-detail{
+            background:#f8fafc;
+            padding:22px;
+            border-radius:8px;
+            border-left:5px solid #047857;
+        }
+
+        .task-detail p{
+            margin-bottom:14px;
+            font-size:1.05em;
+        }
+
+        .task-detail strong{
+            color:#047857;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🗂️ Dnyanesh Rane – Task Manager</h1>
+        <p>Organise daily work with clarity and focus</p>
+    </header>
+
+    <nav>
+        <a href="{{ url_for('index') }}">Dashboard</a>
+        <a href="{{ url_for('add') }}">Add Task</a>
+        <a href="{{ url_for('about') }}">About</a>
+    </nav>
+
+    <main>
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Dnyanesh Rane · Flask Task Management Project</p>
+    </footer>
+</div>
+
+</body>
+</html>

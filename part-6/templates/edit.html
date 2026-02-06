@@ -1,0 +1,84 @@
+<!-- part6/templates/edit.html -->
+{% extends "base.html" %}
+
+{% block title %}Edit Task | Dnyanesh Rane{% endblock %}
+
+{% block content %}
+<h1>Update Task Details</h1>
+
+<form method="post" action="{{ url_for('edit', id=task.id) }}" style="max-width:600px;">
+
+    <div style="margin-bottom:16px;">
+        <label for="title"><strong>Task Name</strong></label><br>
+        <input
+            type="text"
+            id="title"
+            name="title"
+            value="{{ task.title }}"
+            required
+            style="width:100%;padding:10px;margin-top:6px;"
+        >
+    </div>
+
+    <div style="margin-bottom:16px;">
+        <label for="due_date"><strong>Target Date</strong></label><br>
+        <input
+            type="date"
+            id="due_date"
+            name="due_date"
+            value="{{ task.due_date }}"
+            style="width:100%;padding:10px;margin-top:6px;"
+        >
+    </div>
+
+    <div style="margin-bottom:16px;">
+        <label for="priority"><strong>Priority Level</strong></label><br>
+        <select
+            id="priority"
+            name="priority"
+            required
+            style="width:100%;padding:10px;margin-top:6px;"
+        >
+            <option value="High" {% if task.priority == 'High' %}selected{% endif %}>
+                High
+            </option>
+            <option value="Medium" {% if task.priority == 'Medium' %}selected{% endif %}>
+                Medium
+            </option>
+            <option value="Low" {% if task.priority == 'Low' %}selected{% endif %}>
+                Low
+            </option>
+        </select>
+    </div>
+
+    <div style="margin-bottom:16px;">
+        <label for="status"><strong>Current Status</strong></label><br>
+        <select
+            id="status"
+            name="status"
+            required
+            style="width:100%;padding:10px;margin-top:6px;"
+        >
+            <option value="Pending" {% if task.status == 'Pending' %}selected{% endif %}>
+                Pending
+            </option>
+            <option value="In Progress" {% if task.status == 'In Progress' %}selected{% endif %}>
+                In Progress
+            </option>
+            <option value="Completed" {% if task.status == 'Completed' %}selected{% endif %}>
+                Completed
+            </option>
+        </select>
+    </div>
+
+    <input
+        type="submit"
+        value="Save Changes"
+        style="padding:10px 20px;background:#047857;color:white;border:none;border-radius:6px;cursor:pointer;"
+    >
+</form>
+
+<p style="margin-top:22px;">
+    <a href="{{ url_for('index') }}">← Back to Dashboard</a>
+</p>
+{% endblock %}

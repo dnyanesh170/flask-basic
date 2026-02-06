@@ -1,0 +1,87 @@
+<!-- ==================================================
+part5/templates/contact.html
+Contact Page – Dnyanesh Rane
+================================================== -->
+
+{% extends "base.html" %}
+
+{% block title %}Contact | {{ info.name }}{% endblock %}
+
+{% block content %}
+
+<!-- ================= CONTACT DETAILS ================= -->
+<div class="card">
+    <h2>Contact Me</h2>
+    <p>
+        I’m open to internships, entry-level opportunities, collaborations,
+        and meaningful tech discussions.  
+        Feel free to connect with me using the details below.
+    </p>
+
+    <div style="margin-top: 24px;">
+        <div class="contact-item">
+            <strong>Email:</strong>
+            <a href="mailto:{{ info.email }}">
+                {{ info.email }}
+            </a>
+        </div>
+
+        <div class="contact-item">
+            <strong>GitHub:</strong>
+            <a href="{{ info.github }}" target="_blank" rel="noopener">
+                {{ info.github }}
+            </a>
+        </div>
+
+        <div class="contact-item">
+            <strong>LinkedIn:</strong>
+            <a href="{{ info.linkedin }}" target="_blank" rel="noopener">
+                {{ info.linkedin }}
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ================= TECH EXPLANATION ================= -->
+<div class="card">
+    <h2>How This Page Works</h2>
+    <p>
+        This contact page is built using core Flask and Jinja2 concepts
+        learned throughout this project.
+    </p>
+
+    <ul style="margin-left: 20px; margin-top: 12px;">
+        <li>Personal data rendered dynamically from <code>app.py</code></li>
+        <li>Secure external links using <code>target="_blank"</code> and <code>rel="noopener"</code></li>
+        <li>Reusable layout with template inheritance</li>
+        <li>Centralized styling via <code>static/style.css</code></li>
+        <li>Clean, responsive UI suitable for portfolios</li>
+    </ul>
+</div>
+
+<!-- ================= COMPLETION NOTE ================= -->
+<div class="info-box">
+    <strong>Nice Work 👏</strong>
+    <p>
+        You’ve now explored all major sections of this Flask-based
+        personal portfolio website.
+    </p>
+    <p style="margin-top: 10px;">
+        <strong>Next step:</strong>  
+        Add a database, authentication, or deploy this project
+        on platforms like Render, Railway, or PythonAnywhere.
+    </p>
+</div>
+
+<!-- ================= QUICK LINKS ================= -->
+<div class="card">
+    <h2>Quick Links</h2>
+    <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 16px;">
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Home</a>
+        <a href="{{ url_for('about') }}" class="btn btn-secondary">About</a>
+        <a href="{{ url_for('projects') }}" class="btn btn-secondary">Projects</a>
+        <a href="{{ url_for('blog') }}" class="btn btn-secondary">Blog</a>
+    </div>
+</div>
+
+{% endblock %}
